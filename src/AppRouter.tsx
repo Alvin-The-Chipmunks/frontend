@@ -8,8 +8,9 @@ import {
 import CategorySelectPage from "./pages/CategorySelectPage";
 import HeatmapPage from "./pages/HeatmapPage";
 import InsightsPage from "./pages/InsightsPage";
+import Header from "./components/Header";
 
-export default function App() {
+export default function AppRouter() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
@@ -21,5 +22,12 @@ export default function App() {
     )
   );
   
-  return <RouterProvider router={router} />;
+  return (
+    <div className="h-screen flex flex-col">
+      <Header />
+      <div className="flex-1 overflow-hidden">
+        <RouterProvider router={router} />
+      </div>
+    </div>
+  );
 }
