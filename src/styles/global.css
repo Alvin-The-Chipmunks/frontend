@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+:root {
+  --primary: #DF7168;
+  --secondary: #68DF71;
+  --tertiary: #718FDF;
+}
 
 /* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;

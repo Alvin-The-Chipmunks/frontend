@@ -1,11 +1,4 @@
 
-// https://deck.gl/examples/screen-grid-layer
-
-// create matrix
-
-// 
-
-import { createRoot } from "react-dom/client";
 import { DeckGL } from "@deck.gl/react";
 import { HeatmapLayer } from "@deck.gl/aggregation-layers";
 import { Map } from "@vis.gl/react-google-maps";
@@ -17,29 +10,25 @@ const DATA_URL =
 const INITIAL_VIEW_STATE: MapViewState = {
   longitude: -73.75,
   latitude: 40.73,
-  zoom: 9,
+  zoom: 10,
   maxZoom: 16,
   pitch: 0,
   bearing: 0,
 };
 
-const MAP_STYLE =
-  "https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json";
 
 type DataPoint = [longitude: number, latitude: number, count: number];
 
-export default function App({
+export default function HeatmapDisplay({
   data = DATA_URL,
   intensity = 1,
   threshold = 0.03,
   radiusPixels = 30,
-  mapStyle = MAP_STYLE,
 }: {
   data?: string | DataPoint[];
   intensity?: number;
   threshold?: number;
   radiusPixels?: number;
-  mapStyle?: string;
 }) {
   const layers = [
     new HeatmapLayer<DataPoint>({
@@ -63,7 +52,7 @@ export default function App({
       <Map
         reuseMaps
         defaultCenter={{ lng: -80.12236, lat: 26.376032 }}
-        defaultZoom={10}
+        defaultZoom={12}
         gestureHandling="greedy"
         disableDefaultUI
       />
@@ -71,6 +60,3 @@ export default function App({
   );
 }
 
-export function renderToDOM(container: HTMLDivElement) {
-  createRoot(container).render(<App />);
-}
