@@ -1,6 +1,7 @@
 import { useInput } from "../hooks/useInput";
 import { useNavigate } from "react-router";
 import logo from "../assets/soflo_atlus.png";
+import { useZipcode } from "../AppRouter";
 
 export default function Header({
   withLogo,
@@ -11,19 +12,16 @@ export default function Header({
   withBackButton?: boolean;
   setZipcode: (zipcode: string) => void;
 }) {
-  const zipcodeInput = useInput();
+  const { zipcode } = useZipcode();
+  const zipcodeInput = useInput(zipcode);
   const navigate = useNavigate();
 
   const handleSearch = () => {
-    console.log("Searching for:", zipcodeInput.value);
+    setZipcode(zipcodeInput.value);
   };
 
   async function handleGoBack() {
     navigate(-1);
-  }
-
-  async function handleZipcodeChange() {
-    setZipcode(zipcodeInput.value);
   }
 
   return (
@@ -67,7 +65,7 @@ export default function Header({
               onKeyPress={(e) => e.key === "Enter" && handleSearch()}
             />
             <button
-              onClick={handleZipcodeChange}
+              onClick={handleSearch}
               className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1.5 rounded-full bg-[var(--primary)] text-white hover:bg-primary/80 transition-colors duration-200 shadow-sm"
               aria-label="Search"
             >

@@ -3,6 +3,8 @@ import { useNavigate } from "react-router";
 import PageNavButton from "../components/PageNavButton";
 // import MapDisplay from "../components/MapDisplay";
 import MapDisplay from "../components/MapDisplay.mock";
+import { getCommunityData } from "../api/attom";
+import { useZipcode } from "../AppRouter";
 
 // order these to where they make sense on a page
 const categoryItems = [
@@ -21,12 +23,15 @@ const categoryItems = [
 export default function CategorySelectPage() {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const { zipcode } = useZipcode();
 
   const handleCategorySelect = (categoryId: string) => {
     setSelectedCategory((prev) => (prev === categoryId ? null : categoryId));
   };
 
-  function handleNavigateHeatmap() {
+  async function handleNavigateHeatmap() {
+    const communityData = await getCommunityData(zipcode);
+    console.log("Community data: ", communityData);
     navigate("/heatmap");
   }
 
