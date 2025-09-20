@@ -23,8 +23,6 @@ const INITIAL_VIEW_STATE: MapViewState = {
   bearing: 0,
 };
 
-const MAP_STYLE =
-  "https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json";
 
 type DataPoint = [longitude: number, latitude: number, count: number];
 
@@ -33,13 +31,11 @@ export default function HeatmapDisplay({
   intensity = 1,
   threshold = 0.03,
   radiusPixels = 30,
-  mapStyle = MAP_STYLE,
 }: {
   data?: string | DataPoint[];
   intensity?: number;
   threshold?: number;
   radiusPixels?: number;
-  mapStyle?: string;
 }) {
   const layers = [
     new HeatmapLayer<DataPoint>({
