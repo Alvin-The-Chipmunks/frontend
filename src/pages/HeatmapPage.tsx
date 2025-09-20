@@ -6,7 +6,7 @@ export default function HeatmapPage() {
 
 
   function handleNavigateHeatmap() {
-    navigate("/heatmap");
+    navigate("/insights");
   }
 
   return (
@@ -18,10 +18,10 @@ export default function HeatmapPage() {
         <div className="flex flex-wrap gap-3 w-full justify-between items-center">
           <InfoCard 
           className="w-full"    
-            title="Pet Friendly"
+            title="Pet Friendliness"
             description="This area offers good pet amenities with 3 dog parks within 2 miles and pet-friendly businesses nearby."
-            category="Amenities"
-            accentColor="blue"
+            category="Great!"
+            accentColor="green"
           />
         </div>
       </div>
