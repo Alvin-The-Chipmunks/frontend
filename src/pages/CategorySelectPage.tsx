@@ -33,11 +33,11 @@ export default function CategorySelectPage() {
 
   async function handleNavigateHeatmap() {
     // const communityData = await getCommunityData(zipcode);
+    // console.log("Community data: ", communityData);
     const aiInsight = await getAiInsight(zipcode, selectedCategory as string);
     
-    setInsight({ category: selectedCategory as string, content: aiInsight.content });
+    setInsight({ category: selectedCategory as string, content: aiInsight?.data?.content });
 
-    // console.log("Community data: ", communityData);
     console.log("Ai insight: ", aiInsight);
     navigate("/heatmap");
 

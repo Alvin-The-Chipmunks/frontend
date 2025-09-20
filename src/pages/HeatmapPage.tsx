@@ -3,15 +3,13 @@ import InfoCard from "../components/InfoCard";
 import PageNavButton from "../components/PageNavButton";
 // import HeatmapDisplay from "../components/HeatmapDisplay";
 import HeatmapDisplay from "../components/HeatmapDisplay.mock";
-import { aiInsights } from "../data/mock/ai-insights";
-import { useState } from "react";
+import { useInsight } from "../AppRouter";
+import { capitalize } from "../utils/common";
 
 export default function HeatmapPage() {
-  const [selectedCategory, setSelectedCategory] = useState<string>(
-    "hurricanes" as const
-  );
 
   const navigate = useNavigate();
+  const { insight } = useInsight();
 
   function handleNavigateHeatmap() {
     navigate("/insights");
@@ -28,16 +26,9 @@ export default function HeatmapPage() {
         <div className="flex flex-wrap gap-3 w-full justify-between items-center">
           <InfoCard
             className="w-full"
-            title={selectedCategory.toUpperCase()}
+            title={capitalize(insight?.category as string)}
             description={
-              aiInsights[
-                selectedCategory as keyof typeof aiInsights
-              ].summary
-            }
-            category={
-              aiInsights[
-                selectedCategory as keyof typeof aiInsights
-              ].label
+                insight?.content as string
             }
             accentColor="green"
           />
