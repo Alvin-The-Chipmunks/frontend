@@ -7,8 +7,8 @@ import MapDisplay from "../components/MapDisplay.mock";
 // import { getCommunityData } from "../api/attom";
 import { useZipcode } from "../AppRouter";
 import { useInsight } from "../AppRouter";
-import { getCommunityData } from "../api/attom";
-import { communityQueryMap } from "../data/constants";
+// import { getCommunityData } from "../api/attom";
+// import { communityQueryMap } from "../data/constants";
 // order these to where they make sense on a page
 const categoryItems = [
     { id: "hurricanes", label: "Hurricanes", icon: "🌪️" },
@@ -31,21 +31,21 @@ export default function CategorySelectPage() {
   };
 
   async function handleNavigateHeatmap() {
-    const communityData = await getCommunityData(
-      zipcode,
-      communityQueryMap[selectedCategory as keyof typeof communityQueryMap]
-        .section,
-      communityQueryMap[selectedCategory as keyof typeof communityQueryMap]
-        .field
-    );
+    // const communityData = await getCommunityData(
+    //   zipcode,
+    //   communityQueryMap[selectedCategory as keyof typeof communityQueryMap]
+    //     .section,
+    //   communityQueryMap[selectedCategory as keyof typeof communityQueryMap]
+    //     .field
+    // );
     const aiInsight = await getAiInsight(zipcode, selectedCategory as string);
 
     setInsight({
       category: selectedCategory as string,
-      content: aiInsight?.data?.content,
+      content: aiInsight?.content,
     });
 
-    console.log("Community data: ", communityData);
+    // console.log("Community data: ", communityData);
     console.log("Ai insight: ", aiInsight);
     navigate("/heatmap");
   }

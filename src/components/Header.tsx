@@ -1,5 +1,5 @@
 import { useInput } from "../hooks/useInput";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 import logo from "../assets/soflo_atlus.png";
 import { useZipcode } from "../AppRouter";
 
@@ -14,15 +14,15 @@ export default function Header({
 }) {
   const { zipcode } = useZipcode();
   const zipcodeInput = useInput(zipcode);
-  const navigate = useNavigate();
+//   const navigate = useNavigate();
 
   const handleSearch = () => {
     setZipcode(zipcodeInput.value);
   };
 
-  async function handleGoBack() {
-    navigate(-1);
-  }
+//   async function handleGoBack() {
+//     navigate(-1);
+//   }
 
   return (
     <header className="bg-white shadow-sm border-b border-gray-200 w-full h-16 px-4">
@@ -34,7 +34,7 @@ export default function Header({
           )}
           {withBackButton && (
             <button
-              onClick={handleGoBack}
+            //   onClick={handleGoBack}
               className="p-2 rounded-full hover:bg-gray-100 transition-colors duration-200 text-gray-600 hover:text-gray-800"
               aria-label="Go back"
             >

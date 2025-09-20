@@ -1,10 +1,11 @@
 export async function getAiInsight(zipcode: string, criteria: string) {
     console.log("Getting ai insight for zipcode: ", zipcode);
   try {
-    const res = await fetch(`${import.meta.env.VITE_BACKEND_API}/prompt`,{
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_API}/insights`,{
         method: "POST",
-        body: JSON.stringify({ zipcode, criteria }),
+        body: JSON.stringify({ zipcode, category: criteria}),
         headers: {
+            "accept": "application/json",
             "Content-Type": "application/json",
         },
     });
