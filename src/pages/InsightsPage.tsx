@@ -50,7 +50,7 @@ export default function InsightsPage() {
           </div>
           <div className="flex gap-3 mt-4">
             <Button onClick={() => {}}>Yes</Button>
-            <Button onClick={() => {}}>No</Button>
+            <Button onClick={() => {}} variant="secondary">No</Button>
           </div>
         </div>
 

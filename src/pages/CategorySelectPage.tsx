@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import PageNavButton from "../components/PageNavButton";
 // order these to where they make sense on a page
 const categoryItems = [
   { id: "restaurants", label: "Restaurants", icon: "🍽️" },
@@ -15,7 +16,6 @@ const categoryItems = [
 
 export default function CategorySelectPage() {
   const navigate = useNavigate();
-
 
   function handleNavigateHeatmap() {
     navigate("/heatmap");
@@ -45,13 +45,9 @@ export default function CategorySelectPage() {
         </div>
       </div>
 
-      {/* View Heatmap Button */}
-      <button
-        onClick={handleNavigateHeatmap}
-        className="m-4 bg-blue-500 text-white rounded-full px-4 py-2 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200 cursor-pointer hover:bg-blue-600"
-      >
+      <PageNavButton onClick={handleNavigateHeatmap}>
         View Heatmap
-      </button>
+      </PageNavButton>
     </div>
   );
 }
