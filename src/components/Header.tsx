@@ -55,7 +55,7 @@ export default function Header({
         <div className="flex-1 max-w-md mx-4">
           <div className="relative">
             <input
-              className="w-full h-10 pl-4 pr-12 bg-gray-50 border border-gray-200 rounded-full text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all duration-200"
+              className="w-full h-10 pl-4 pr-12 bg-gray-50 border border-gray-200 rounded-full text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--secondary)] focus:border-transparent transition-all duration-200"
               {...zipcodeInput}
               placeholder="Enter zip code"
               onKeyPress={(e) => e.key === "Enter" && handleSearch()}
