@@ -1,4 +1,4 @@
-import type { DataPoint } from "../types";
+import type { DataPoint } from "../../types";
 
 export const mockCoordinatesB: DataPoint[] = [
   

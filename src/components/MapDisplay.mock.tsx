@@ -1,11 +1,4 @@
 
-// https://deck.gl/examples/screen-grid-layer
-
-// create matrix
-
-// 
-
-
 import { DeckGL } from "@deck.gl/react";
 import { Map } from "@vis.gl/react-google-maps";
 import type { MapViewState } from "@deck.gl/core";
@@ -13,8 +6,9 @@ import type { MapViewState } from "@deck.gl/core";
 const INITIAL_VIEW_STATE: MapViewState = {
   longitude: -73.75,
   latitude: 40.73,
-  zoom: 9,
-  maxZoom: 16,
+  zoom: 10,
+  minZoom: 14,
+  maxZoom: 14,
   pitch: 0,
   bearing: 0,
 };

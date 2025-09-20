@@ -1,11 +1,4 @@
 
-// https://deck.gl/examples/screen-grid-layer
-
-// create matrix
-
-// 
-
-
 import { DeckGL } from "@deck.gl/react";
 import { HeatmapLayer } from "@deck.gl/aggregation-layers";
 import { Map } from "@vis.gl/react-google-maps";

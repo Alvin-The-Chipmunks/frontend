@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import PageNavButton from "../components/PageNavButton";
-import MapDisplay from "../components/MapDisplay";
+// import MapDisplay from "../components/MapDisplay";
+import MapDisplay from "../components/MapDisplay.mock";
 
 // order these to where they make sense on a page
 const categoryItems = [
-  { id: "restaurants", label: "Restaurants", icon: "🍽️" },
+  { id: "hurricanes", label: "Hurricanes", icon: "🌪️" },
   { id: "shopping", label: "Shopping Centers", icon: "🛍️" },
   { id: "parks", label: "Parks & Recreation", icon: "🌳" },
   { id: "schools", label: "Schools", icon: "🏫" },

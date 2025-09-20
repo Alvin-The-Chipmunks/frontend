@@ -1,18 +1,21 @@
 import { useNavigate } from "react-router";
 import InfoCard from "../components/InfoCard";
 import Button from "../components/Button";
+import { aiInsights } from "../data/mock/ai-insights";
+import { useState } from "react";
+import { addNewLines, capitalize } from "../utils/common";
 
 export default function InsightsPage() {
-  const navigate = useNavigate();
+//   const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useState<string>("hurricanes" as const);
+//   const handleViewHeatmap = () => {
+//     navigate("/heatmap");
+//   };
 
-  const handleViewHeatmap = () => {
-    navigate("/heatmap");
-  };
-
-  const handleViewMoreInsights = () => {
-    // Could navigate to a detailed insights page or show more cards
-    console.log("View more insights");
-  };
+//   const handleViewMoreInsights = () => {
+//     // Could navigate to a detailed insights page or show more cards
+//     console.log("View more insights");
+//   };
 
   return (
     <div className="h-full bg-gray-50 flex flex-col p-4 gap-4 overflow-y-auto">
@@ -36,16 +39,11 @@ export default function InsightsPage() {
               <h3
                 className={`text-xl font-bold text-gray-900 transition-colors duration-200 mb-2`}
               >
-                Flood Risk Analysis
+                {capitalize(selectedCategory)}
               </h3>
             </div>
             <p className="text-gray-600 text-sm leading-relaxed">
-              In Zip code: 33433, the flood season usually peaks in August and
-              September. <br />
-              <br /> Based on historical reports, this area has seen fewer flood
-              incidents than many Florida zip codes.
-              <br />
-              <br /> Want to explore the map for specific streets?{" "}
+              {aiInsights[selectedCategory as keyof typeof aiInsights].insight}
             </p>
           </div>
           <div className="flex gap-3 mt-4">
