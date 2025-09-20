@@ -1,7 +1,7 @@
 export async function getCommunityData(zipcode: string, section: string, field: string) {
     console.log("Getting community data for zipcode: ", zipcode);
   try {
-    const res = await fetch(`${import.meta.env.VITE_BACKEND_API}/community-data`,{
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_API}/heatmap-data`,{
         method: "POST",
         body: JSON.stringify({ zipcode, section, field }),
         headers: {

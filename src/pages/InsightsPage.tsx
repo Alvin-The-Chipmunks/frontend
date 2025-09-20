@@ -1,21 +1,22 @@
 import { useNavigate } from "react-router";
 import InfoCard from "../components/InfoCard";
 import Button from "../components/Button";
-import { aiInsights } from "../data/mock/ai-insights";
+import { aiBigInsights } from "../data/mock/ai-insights";
 import { useState } from "react";
 import { addNewLines, capitalize } from "../utils/common";
+import { useInsight } from "../AppRouter";
 
 export default function InsightsPage() {
-//   const navigate = useNavigate();
-  const [selectedCategory, setSelectedCategory] = useState<string>("hurricanes" as const);
-//   const handleViewHeatmap = () => {
-//     navigate("/heatmap");
-//   };
+  //   const navigate = useNavigate();
+  const { insight } = useInsight();
+  //   const handleViewHeatmap = () => {
+  //     navigate("/heatmap");
+  //   };
 
-//   const handleViewMoreInsights = () => {
-//     // Could navigate to a detailed insights page or show more cards
-//     console.log("View more insights");
-//   };
+  //   const handleViewMoreInsights = () => {
+  //     // Could navigate to a detailed insights page or show more cards
+  //     console.log("View more insights");
+  //   };
 
   return (
     <div className="h-full bg-gray-50 flex flex-col p-4 gap-4 overflow-y-auto">
@@ -39,16 +40,18 @@ export default function InsightsPage() {
               <h3
                 className={`text-xl font-bold text-gray-900 transition-colors duration-200 mb-2`}
               >
-                {capitalize(selectedCategory)}
+                {capitalize(insight?.category as string || "Hurricanes")}
               </h3>
             </div>
             <p className="text-gray-600 text-sm leading-relaxed">
-              {aiInsights[selectedCategory as keyof typeof aiInsights].insight}
+              {aiBigInsights[insight?.category as keyof typeof aiBigInsights]}
             </p>
           </div>
           <div className="flex gap-3 mt-4">
             <Button onClick={() => {}}>Yes</Button>
-            <Button onClick={() => {}} variant="secondary">No</Button>
+            <Button onClick={() => {}} variant="secondary">
+              No
+            </Button>
           </div>
         </div>
 
@@ -71,8 +74,8 @@ export default function InsightsPage() {
         />
 
         <InfoCard
-          title="Dining Scene"
-          description="Diverse culinary options including 15 restaurants within 0.5 miles, ranging from casual to fine dining."
+          title="Cost of Living"
+          description="The cost of living in this area is very good. Based on the 2020 Cost of Living Index, the cost of living in the United States is 100, this area is 30."
           category="Very Good"
           accentColor="orange"
         />
