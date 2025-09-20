@@ -10,7 +10,7 @@ app.use(express.json());
 // POST /community-data endpoint
 app.post('/community-data', (req, res) => {
   try {
-    const { zipcode } = req.body;
+    const { zipcode, section, field } = req.body;
     
     console.log('Received community data request for zipcode:', zipcode);
     

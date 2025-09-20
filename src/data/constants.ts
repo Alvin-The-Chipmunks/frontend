@@ -1,3 +1,16 @@
+export const communityQueryMap = {
+  "hurricanes": { section: "naturalDisasters", field: "hurricane_Index" },
+//   "shopping": { section: "shopping", field: "shopping_Index" },
+//   "parks": { section: "parks", field: "parks_Index" },
+//   "schools": { section: "schools", field: "schools_Index" },
+//   "hospitals": { section: "hospitals", field: "hospitals_Index" },
+//   "transportation": { section: "transportation", field: "transportation_Index" },
+//   "entertainment": { section: "entertainment", field: "entertainment_Index" },
+//   "fitness": { section: "fitness", field: "fitness_Index" },
+//   "banks": { section: "banks", field: "banks_Index" },
+//   "gas": { section: "gas", field: "gas_Index" },
+}
+
 export const COORDINATES = {
   "33068": { lat: 26.247236, lng: -80.106125 },
   "10001": { lat: 40.7505, lng: -73.9934 }, // Manhattan

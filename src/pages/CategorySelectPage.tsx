@@ -7,18 +7,17 @@ import MapDisplay from "../components/MapDisplay.mock";
 // import { getCommunityData } from "../api/attom";
 import { useZipcode } from "../AppRouter";
 import { useInsight } from "../AppRouter";
+import { getCommunityData } from "../api/attom";
+import { communityQueryMap } from "../data/constants";
 // order these to where they make sense on a page
 const categoryItems = [
-  { id: "hurricanes", label: "Hurricanes", icon: "🌪️" },
-  { id: "shopping", label: "Shopping Centers", icon: "🛍️" },
-  { id: "parks", label: "Parks & Recreation", icon: "🌳" },
-  { id: "schools", label: "Schools", icon: "🏫" },
-  { id: "hospitals", label: "Hospitals", icon: "🏥" },
-  { id: "transportation", label: "Transportation", icon: "🚌" },
-  { id: "entertainment", label: "Entertainment", icon: "🎭" },
-  { id: "fitness", label: "Fitness Centers", icon: "💪" },
-  { id: "banks", label: "Banks & ATMs", icon: "🏦" },
-  { id: "gas", label: "Gas Stations", icon: "⛽" },
+    { id: "hurricanes", label: "Hurricanes", icon: "🌪️" },
+    {id:"age", label: "Age", icon: "👵"},
+    {id:"crime", label: "Crime", icon: "🚨"},
+    {id:"living-cost", label: "Living Cost", icon: "💰"},
+    {id:"noise-level", label: "Noise Level", icon: "🔊"},
+    {id:"pet-friendliness", label: "Pet Friendliness", icon: "🐶"},
+    {id:"walkability", label: "Walkability", icon: "🚶"},
 ];
 
 export default function CategorySelectPage() {
@@ -32,15 +31,23 @@ export default function CategorySelectPage() {
   };
 
   async function handleNavigateHeatmap() {
-    // const communityData = await getCommunityData(zipcode);
-    // console.log("Community data: ", communityData);
+    const communityData = await getCommunityData(
+      zipcode,
+      communityQueryMap[selectedCategory as keyof typeof communityQueryMap]
+        .section,
+      communityQueryMap[selectedCategory as keyof typeof communityQueryMap]
+        .field
+    );
     const aiInsight = await getAiInsight(zipcode, selectedCategory as string);
-    
-    setInsight({ category: selectedCategory as string, content: aiInsight?.data?.content });
 
+    setInsight({
+      category: selectedCategory as string,
+      content: aiInsight?.data?.content,
+    });
+
+    console.log("Community data: ", communityData);
     console.log("Ai insight: ", aiInsight);
     navigate("/heatmap");
-
   }
 
   return (

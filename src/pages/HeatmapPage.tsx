@@ -7,7 +7,6 @@ import { useInsight } from "../AppRouter";
 import { capitalize } from "../utils/common";
 
 export default function HeatmapPage() {
-
   const navigate = useNavigate();
   const { insight } = useInsight();
 
@@ -26,9 +25,10 @@ export default function HeatmapPage() {
         <div className="flex flex-wrap gap-3 w-full justify-between items-center">
           <InfoCard
             className="w-full"
-            title={capitalize(insight?.category as string)}
+            title={capitalize((insight?.category as string) || "Hurricanes")}
             description={
-                insight?.content as string
+              (insight?.content as string) ||
+              "Hurricanes are a natural disaster that can cause significant damage to property and infrastructure. They are often caused by strong winds, heavy rain, and storm surges. Hurricanes are classified by their wind speed and can be categorized as tropical storms, hurricanes, and major hurricanes."
             }
             accentColor="green"
           />
