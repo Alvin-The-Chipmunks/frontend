@@ -1,6 +1,6 @@
-import type { DataPoint } from "../types";
+import type { DataPoint } from "../../types";
 
-export const mockCoordinates: DataPoint[] = [
+export const mockCoordinatesB: DataPoint[] = [
   
     // Very low values (0.1-0.2) - Cool colors
     { lat: 26.31, lng: -80.19, val: 0.1 },
