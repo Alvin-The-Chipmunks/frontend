@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import PageNavButton from "../components/PageNavButton";
+import { getAiInsight } from "../api/openai";
 // import MapDisplay from "../components/MapDisplay";
 import MapDisplay from "../components/MapDisplay.mock";
-import { getCommunityData } from "../api/attom";
+// import { getCommunityData } from "../api/attom";
 import { useZipcode } from "../AppRouter";
-
+import { useInsight } from "../AppRouter";
 // order these to where they make sense on a page
 const categoryItems = [
   { id: "hurricanes", label: "Hurricanes", icon: "🌪️" },
@@ -24,15 +25,22 @@ export default function CategorySelectPage() {
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const { zipcode } = useZipcode();
+  const { setInsight } = useInsight();
 
   const handleCategorySelect = (categoryId: string) => {
     setSelectedCategory((prev) => (prev === categoryId ? null : categoryId));
   };
 
   async function handleNavigateHeatmap() {
-    const communityData = await getCommunityData(zipcode);
-    console.log("Community data: ", communityData);
+    // const communityData = await getCommunityData(zipcode);
+    const aiInsight = await getAiInsight(zipcode, selectedCategory as string);
+    
+    setInsight({ category: selectedCategory as string, content: aiInsight.content });
+
+    // console.log("Community data: ", communityData);
+    console.log("Ai insight: ", aiInsight);
     navigate("/heatmap");
+
   }
 
   return (

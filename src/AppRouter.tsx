@@ -13,6 +13,12 @@ import InsightsPage from "./pages/InsightsPage";
 import Header from "./components/Header";
 import { useState, createContext, useContext } from "react";
 
+// Insight type definition
+export interface Insight {
+  category: string;
+  content: string;
+}
+
 // Create a context for zipcode state
 const ZipcodeContext = createContext<{
   zipcode: string;
@@ -22,8 +28,18 @@ const ZipcodeContext = createContext<{
   setZipcode: () => {},
 });
 
-// Custom hook to use zipcode context
+// Create a context for insight state
+const InsightContext = createContext<{
+  insight: Insight | null;
+  setInsight: (insight: Insight | null) => void;
+}>({
+  insight: null,
+  setInsight: () => {},
+});
+
+// Custom hooks to use contexts
 export const useZipcode = () => useContext(ZipcodeContext);
+export const useInsight = () => useContext(InsightContext);
 
 function AppLayout() {
   const location = useLocation();
@@ -46,12 +62,15 @@ function AppLayout() {
 
 export default function AppRouter() {
   const [zipcode, setZipcode] = useState<string>("33166");
+  const [insight, setInsight] = useState<Insight | null>(null);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={
         <ZipcodeContext.Provider value={{ zipcode, setZipcode }}>
-          <AppLayout />
+          <InsightContext.Provider value={{ insight, setInsight }}>
+            <AppLayout />
+          </InsightContext.Provider>
         </ZipcodeContext.Provider>
       }>
         <Route index element={<Navigate to="/home" replace />} />
