@@ -5,9 +5,11 @@ import logo from "../assets/soflo_atlus.png";
 export default function Header({
   withLogo,
   withBackButton,
+  setZipcode,
 }: {
   withLogo?: boolean;
   withBackButton?: boolean;
+  setZipcode: (zipcode: string) => void;
 }) {
   const zipcodeInput = useInput();
   const navigate = useNavigate();
@@ -18,6 +20,10 @@ export default function Header({
 
   async function handleGoBack() {
     navigate(-1);
+  }
+
+  async function handleZipcodeChange() {
+    setZipcode(zipcodeInput.value);
   }
 
   return (
@@ -61,7 +67,7 @@ export default function Header({
               onKeyPress={(e) => e.key === "Enter" && handleSearch()}
             />
             <button
-              onClick={handleSearch}
+              onClick={handleZipcodeChange}
               className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1.5 rounded-full bg-[var(--primary)] text-white hover:bg-primary/80 transition-colors duration-200 shadow-sm"
               aria-label="Search"
             >
